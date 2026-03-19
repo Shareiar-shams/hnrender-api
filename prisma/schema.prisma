@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Bookmark {
+  id          Int      @id @default(autoincrement())
+  storyId     Int      @unique  // HN story ID
+  title       String
+  url         String?
+  author      String
+  points      Int      @default(0)
+  commentCount Int     @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Summary {
+  id         Int      @id @default(autoincrement())
+  storyId    Int      @unique  // HN story ID
+  keyPoints  String[] // Array of key points
+  sentiment  String   // positive | negative | mixed | neutral
+  summary    String   // Short paragraph summary
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
