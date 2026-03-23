@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@google/generative-ai':
-        specifier: ^0.24.1
-        version: 0.24.1
       '@prisma/adapter-pg':
         specifier: ^7.5.0
         version: 7.5.0
@@ -29,6 +26,9 @@ importers:
       express:
         specifier: ^5.2.1
         version: 5.2.1
+      groq-sdk:
+        specifier: ^1.1.1
+        version: 1.1.1
       pg:
         specifier: ^8.20.0
         version: 8.20.0
@@ -89,10 +89,6 @@ packages:
 
   '@electric-sql/pglite@0.3.15':
     resolution: {integrity: sha512-Cj++n1Mekf9ETfdc16TlDi+cDDQF0W7EcbyRHYOAeZdsAe8M/FJg18itDTSwyHfar2WIezawM9o0EKaRGVKygQ==}
-
-  '@google/generative-ai@0.24.1':
-    resolution: {integrity: sha512-MqO+MLfM6kjxcKoy0p1wRzG3b4ZZXtPI+z2IE26UogS2Cm/XHO+7gGRBh6gcJsOiIVoH93UwKvW4HdgiOZCy9Q==}
-    engines: {node: '>=18.0.0'}
 
   '@hono/node-server@1.19.9':
     resolution: {integrity: sha512-vHL6w3ecZsky+8P5MD+eFfaGTyCeOHUIFYMGpQGbrBTSmNNoxv0if69rEZ5giu36weC5saFuznL411gRX7bJDw==}
@@ -528,6 +524,10 @@ packages:
 
   graphmatch@1.1.1:
     resolution: {integrity: sha512-5ykVn/EXM1hF0XCaWh05VbYvEiOL2lY1kBxZtaYsyvjp7cmWOU1XsAdfQBwClraEofXDT197lFbXOEVMHpvQOg==}
+
+  groq-sdk@1.1.1:
+    resolution: {integrity: sha512-p0fb/sfrYfUDJf+b4s+ptV6XrQnY0gA0u2pbaH4E1l6yaeLCKtdX5OBhP/wXXBuKrSnU9w45RaFebfJDWxsXMw==}
+    hasBin: true
 
   has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -1074,8 +1074,6 @@ snapshots:
 
   '@electric-sql/pglite@0.3.15': {}
 
-  '@google/generative-ai@0.24.1': {}
-
   '@hono/node-server@1.19.9(hono@4.11.4)':
     dependencies:
       hono: 4.11.4
@@ -1580,6 +1578,8 @@ snapshots:
   grammex@3.1.12: {}
 
   graphmatch@1.1.1: {}
+
+  groq-sdk@1.1.1: {}
 
   has-flag@3.0.0: {}
 
