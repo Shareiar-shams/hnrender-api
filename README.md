@@ -7,6 +7,7 @@ A Hacker News reader backend API with bookmarking capabilities and AI-powered di
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
+- [Docker Build](#docker-build)
 - [API Routes](#api-routes)
   - [Health Check](#health-check)
   - [Hacker News Routes](#hacker-news-routes)
@@ -62,6 +63,22 @@ Create a `.env` file based on `.env.example`:
 | `FRONTEND_URL` | Allowed CORS origin | No |
 | `DATABASE_URL` | PostgreSQL connection string | Yes |
 | `GROQ_API_KEY` | API key from Groq dashboard | Yes |
+
+## Docker Build
+
+Use the provided `Dockerfile` to build and run the backend in a container.
+
+1. **Build the image**
+   ```bash
+   docker build -t hn-reader-backend .
+   ```
+
+2. **Run the container**
+   ```bash
+   docker run --rm -p 4000:4000 --env-file .env hn-reader-backend
+   ```
+
+The container runs `pnpm exec prisma migrate deploy` on startup and then starts the server.
 
 ## API Routes
 
