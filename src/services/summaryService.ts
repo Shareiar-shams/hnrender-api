@@ -43,7 +43,7 @@ Rules:
 - Return ONLY the raw JSON, absolutely nothing else`
 
   const response = await groq.chat.completions.create({
-    model: 'llama-3.1-8b-instant',  // free, fast model
+    model: 'llama-3.1-8b-instant',
     messages: [{ role: 'user', content: prompt }],
     temperature: 0.3,
     max_tokens: 1024,
