@@ -1,6 +1,8 @@
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import Groq from 'groq-sdk'
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY!
+})
 
 export interface SummaryResult {
   keyPoints: string[]
@@ -40,12 +42,16 @@ Rules:
 - summary: 2-3 sentences max, third person
 - Return ONLY the raw JSON, absolutely nothing else`
 
-  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+  const response = await groq.chat.completions.create({
+    model: 'llama-3.1-8b-instant',  // free, fast model
+    messages: [{ role: 'user', content: prompt }],
+    temperature: 0.3,
+    max_tokens: 1024,
+  })
 
-  const result = await model.generateContent(prompt)
-  const text = result.response.text()
+  const text = response.choices[0]?.message?.content || ''
 
-  // Clean response in case Gemini adds markdown backticks
+  // Clean in case model adds markdown backticks
   const cleaned = text
     .replace(/```json/g, '')
     .replace(/```/g, '')
