@@ -55,7 +55,7 @@ router.get('/:storyId', async (req, res, next) => {
   try {
     const storyId = parseInt(req.params.storyId);
     const summary = await prisma.summary.findUnique({ where: { storyId } });
-    if (!summary) return res.status(404).json({ error: 'No summary yet' });
+    if (!summary) return res.json({ exists: false })
     res.json(summary);
   } catch (err) {
     next(err);
